@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: delayed
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - image: ko://github.com/psschwei/delayed
+        env:
+        - name: TARGET
+          value: "delayed"
+        - name: SLEEP
+          value: "30"
