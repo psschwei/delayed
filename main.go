@@ -11,8 +11,12 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Starting to handle request\n")
+	log.Print("Starting to handle request\n")
 	doDelay("REQUEST")
+	log.Print(r.Header)
+	log.Print(r.Body)
 	fmt.Fprintf(w, "Request handled\n")
+	log.Print("Request handled\n")
 }
 
 // doDelay takes the name of an environmental variable and sleeps that amount of time
@@ -29,8 +33,10 @@ func doDelay(envvar string) {
 }
 
 func main() {
+	fmt.Println("starting server")
 	log.Print("starting server")
 	doDelay("STARTUP")
+	fmt.Println("server ready")
 	log.Print("server ready")
 
 	http.HandleFunc("/", handler)
