@@ -2,13 +2,12 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: delayed
-  namespace: default
 spec:
   template:
     metadata:
       annotations:
         autoscaling.knative.dev/min-scale: "1"
-        autoscaling.knative.dev/target-burst-capacity: "0" # don't put activator on path
+        autoscaling.knative.dev/target-burst-capacity: "-1" #keep activator on path
     spec:
       containerConcurrency: 1 # each pod handles only 1 request
       containers:
@@ -17,4 +16,4 @@ spec:
         - name: STARTUP
           value: "0"
         - name: REQUEST
-          value: "5"
+          value: "30"
