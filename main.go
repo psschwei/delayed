@@ -14,7 +14,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	log.Print(r.Header)
 	doDelay("REQUEST")
 	log.Print("Request handled\n")
-	fmt.Fprintf(w, "fin\n")
 }
 
 // doDelay takes the name of an environmental variable and sleeps that amount of time
