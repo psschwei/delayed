@@ -11,8 +11,8 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	log.Print("Starting to handle request\n")
-	doDelay("REQUEST")
 	log.Print(r.Header)
+	doDelay("REQUEST")
 	log.Print("Request handled\n")
 	fmt.Fprintf(w, "fin\n")
 }
