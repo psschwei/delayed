@@ -11,7 +11,7 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	log.Print("Starting to handle request\n")
-	log.Print(r.Header)
+	log.Print("inbound path: ", r.Header["X-Forwarded-For"])
 	doDelay("REQUEST")
 	log.Print("Request handled\n")
 }
